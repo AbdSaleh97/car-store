@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>Home</title>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'cars' %}">Car List</a></li>
+              
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+       
+        {% endblock content %}
+    </main>
+    <footer>
+        <p>&copy; 2024 My awesome django project. All rights reserved to Abd Saleh :).</p>
+    </footer>
+</body>
+</html>
