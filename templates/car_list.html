@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/car_list.css' %}">
+<h1 class="text-center my-4">Welcome to the Cars List</h1>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Car List</h2>
+    <div class="d-flex justify-content-end mb-4">
+        <a href="{% url 'create' %}" class="btn btn-primary">Create New Car</a>
+    </div>
+    <div class="row">
+        {% for car in Car %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="https://th.bing.com/th/id/OIP.ChlzuFlX1ByWnCcLtL1oVwHaE7?w=240&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" class="card-img-top" alt="{{ car.car_model }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ car.car_model }}</h5>
+                    <p class="card-text">{{ car.car_brand }}</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="{% url 'details' car.pk %}" class="btn btn-info btn-sm">Details</a>
+                    <div>
+                        <a href="{% url 'update' car.pk %}" class="btn btn-warning btn-sm">Update</a>
+                        <a href="{% url 'delete' car.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
